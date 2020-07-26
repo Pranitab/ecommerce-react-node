@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ProductListContainer from './Containers/ProductListContainer/ProductListContainer';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import ProductDetailsContainer from './Containers/ProductDetailsContainer/ProductDetailsContainer';
+import ShoppingCartContainer from './Containers/ShoppingCartContainer/ShoppingCartContainer';
+import SignInContainer from './Containers/SignInContainer/SignInContainer';
+import RegisterContainer from './Containers/RegisterContainer/RegisterContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+      <Route exact path='/' component={ProductListContainer}></Route>
+      <Route exact path='/cart' component={ShoppingCartContainer}></Route>
+      <Route exact path='/sign-in' component={SignInContainer}></Route>
+      <Route exact path='/register' component={RegisterContainer}></Route>
+      <Route exact path='/:id' component={ProductDetailsContainer}></Route>
+      </Switch>
+    </Router>
   );
 }
 
